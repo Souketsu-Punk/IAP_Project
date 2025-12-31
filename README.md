@@ -35,7 +35,7 @@ Networking assistance
 Repairing phones or laptops
 
 
-But they rarely know who can help them — and they can’t always pay.
+But they rarely know who can help them and they can’t always pay.
 
 This system allows students to:
 
@@ -182,6 +182,8 @@ Skill posting & editing
 Skill exchange request logic
 
 Rating/review system
+
+Postman Testing
 
 
 Member 4: Database Designer + Admin Panel
