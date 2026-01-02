@@ -1,8 +1,6 @@
 # IAP_Project
 
-PROJECT IDEA: Digital “Borrow My Skill” Exchange Platform
-
-A platform where students trade skills, not money.
+PROJECT IDEA: A platform where students trade skills, not money.
 
 
 ---
@@ -133,7 +131,7 @@ Non-Functional Requirements
 
 Main Objective
 
-To develop a web platform where students can trade skills in a fair, structured, and accessible system without involving money.
+Develop a platform where students can trade skills in a fair, structured, and accessible system without involving money.
 
 Specific Objectives
 
@@ -177,7 +175,7 @@ Member 3: PHP Back-End Developer
 
 User login system
 
-Skill posting & editing
+Skill posting
 
 Skill exchange request logic
 
@@ -192,4 +190,4 @@ MySQL database for users, skills, exchanges, reviews
 
 Admin panel for monitoring usage
 
-Security (SQL injection, validation)
+Security (validation, password hashing)
