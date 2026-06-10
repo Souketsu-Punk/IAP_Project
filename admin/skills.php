@@ -6,9 +6,6 @@ if(!isset($_SESSION['admin_id'])) header("Location: login.php");
 $skills = $conn->query("SELECT skills.id, skills.title, users.username 
                         FROM skills JOIN users ON skills.user_id = users.id");
 ?>
-<head>
-    <link rel="stylesheet" href="../assets/css/admin.css">
-</head>
 
 <h2>All Skills</h2>
 <table>

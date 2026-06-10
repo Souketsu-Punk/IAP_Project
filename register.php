@@ -19,8 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include 'includes/header.php'; ?>
-
 <div class="form-section">
     <h2>Register</h2>
 
@@ -30,14 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="POST">
         <input type="text" name="username" placeholder="Username" required>
+
         <input type="email" name="email" placeholder="Email" required>
+
         <input type="password" name="password" placeholder="Password" required>
+
         <button type="submit">Create Account</button>
     </form>
 
-    <p class="form-text">
+    <div class="form-text">
         Already have an account? <a href="login.php">Login</a>
-    </p>
+    </div>
 </div>
-
-<?php include 'includes/footer.php'; ?>

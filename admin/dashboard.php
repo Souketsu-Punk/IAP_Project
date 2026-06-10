@@ -4,9 +4,6 @@ include '../includes/db.php';
 
 if(!isset($_SESSION['admin_id'])) header("Location: login.php");
 ?>
-<head>
-    <link rel="stylesheet" href="../assets/css/admin.css">
-</head>
 
 <h2>Admin Dashboard</h2>
 <ul>

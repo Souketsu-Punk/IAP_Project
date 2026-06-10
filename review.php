@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'includes/db.php';
-include 'includes/header.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -10,7 +9,9 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-
+/* =========================
+   HANDLE FORM SUBMISSION
+   ========================= */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $exchange_id = intval($_POST['exchange_id']);
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    
+    /* Verify user belongs to completed exchange */
     $check = $conn->prepare("
         SELECT e.id
         FROM exchanges e
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Prevent duplicate
+    /* Insert review (unique constraint prevents duplicates) */
     $stmt = $conn->prepare("
         INSERT INTO reviews (exchange_id, user_id, rating, comment)
         VALUES (?, ?, ?, ?)
@@ -50,8 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-
-    //Show review form
+/* =========================
+   SHOW REVIEW FORM (GET)
+   ========================= */
 
 if (!isset($_GET['exchange_id'])) {
     header("Location: Completed_contacts.php");
@@ -60,7 +62,7 @@ if (!isset($_GET['exchange_id'])) {
 
 $exchange_id = intval($_GET['exchange_id']);
 
-// Verify exchange and not already reviewed
+/* Verify exchange + not already reviewed */
 $check = $conn->prepare("
     SELECT e.id
     FROM exchanges e
@@ -77,7 +79,7 @@ if ($check->get_result()->num_rows === 0) {
     exit;
 }
 
-// Prevent duplicate review
+/* Prevent duplicate review */
 $reviewCheck = $conn->prepare("
     SELECT id FROM reviews
     WHERE exchange_id = ? AND user_id = ?
@@ -95,6 +97,80 @@ if ($reviewCheck->get_result()->num_rows > 0) {
 <html>
 <head>
     <title>Leave a Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .review-container {
+            max-width: 450px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .review-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        input[type="number"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        button {
+            width: 100%;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        .rating-hint {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="review-container">
@@ -117,3 +193,4 @@ if ($reviewCheck->get_result()->num_rows > 0) {
 </html>
 
 </html>
+        

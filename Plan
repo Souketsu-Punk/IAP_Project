@@ -1,0 +1,32 @@
+borrow-my-skill/
+│
+├── index.php               
+├── login.php
+├── register.php
+├── logout.php
+├── profile.php             
+├── request_skill.php       
+├── accept_request.php      
+├── complete_exchange.php   
+├── add_review.php
+├── admin/
+│   ├── dashboard.php
+│   ├── users.php
+│   ├── skills.php
+│   ├── exchanges.php
+│   └── login.php
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── images/
+│
+├── includes/
+│   ├── db.php             
+│   ├── header.php
+│   └── footer.php
+│
+└── sql/
+    └── database.sql       
