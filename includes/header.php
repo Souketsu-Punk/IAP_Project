@@ -15,8 +15,8 @@ if(session_status() == PHP_SESSION_NONE){
 <header class="main-header">
     <nav class="navbar">
         <ul class="nav-links" style="display:flex; justify-content:center; list-style:none; padding:10px;">
-            <li style="margin:0 10px;"><a href="/index.php">Home</a></li>
             <?php if(isset($_SESSION['user_id'])): ?>
+                <li style="margin:0 10px;"><a href="/index.php">Home</a></li>
                 <li style="margin:0 10px;"><a href="/profile.php">Profile</a></li>
                 <li style="margin:0 10px;"><a href="/Contracts.php">Contracts</a></li>
                 <li style="margin:0 10px;"><a href="logout.php">Logout</a></li>

@@ -8,6 +8,9 @@ $exchanges = $conn->query("SELECT e.id, u1.username AS requester, s.title as ski
 							join users u1 on e.requester_id = u1.id
 							join users u2 on s.user_id = u2.id;");
 ?>
+<head>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
 
 <h2>All Exchanges</h2>
 <table>

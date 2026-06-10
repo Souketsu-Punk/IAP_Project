@@ -18,9 +18,9 @@ $exchange_id = intval($_POST['exchange_id']);
 $action = $_POST['action'];
 
 /*
-  First verify that:
-  - This exchange exists
-  - The logged-in user is the requested user (skill owner)
+  Verifies that:
+  The exchange exists
+  The logged-in user is the requested user (skill owner)
 */
 $check = $conn->prepare("
     SELECT e.id
@@ -38,7 +38,7 @@ if ($result->num_rows === 0) {
     exit;
 }
 
-/* ===== ACTION HANDLING ===== */
+//ACTION HANDLING
 if ($action === 'accept') {
 
     $stmt = $conn->prepare("

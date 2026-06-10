@@ -17,41 +17,11 @@
     JOIN skills s ON e.skill_id = s.id
     JOIN users u1 ON e.requester_id = u1.id
     JOIN users u2 ON s.user_id = u2.id
-    WHERE e.status = 'completed'
+    WHERE (e.status = 'completed' or e.status = 'cancelled')
       AND (u2.id = $user_id OR u1.id = $user_id)
 ");
 ?>
 
-<style>
-.contract-nav {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 10px;
-    gap: 12px;
-}
-
-.contract-nav a {
-    display: inline-block;
-    padding: 8px 18px;
-    background-color: #e0e0e0;  
-    color: #000;                
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.contract-nav a:hover {
-    background-color: #cfcfcf;
-    transform: translateY(-1px);
-}
-
-
-.contract-nav a.active {
-    background-color: #bdbdbd;
-}
-</style>
 
 
 <ul class="contract-nav">
